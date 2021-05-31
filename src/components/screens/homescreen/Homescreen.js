@@ -1,9 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Col, Container, Row} from 'react-bootstrap'
 import CategoriesBar from '../../categoriesBar/CategoriesBar'
 import Video from "../../video/Video";
+import {vidoesAction} from '../../../redux-store/actions/vidoes.action'
+import {useDispatch} from 'react-redux'
 
 const Homescreen = () => {
+
+    const dispatch = useDispatch()
+    useEffect(() => (
+        dispatch(vidoesAction())
+    ))
+
     return (
         <div>
             <Container>
