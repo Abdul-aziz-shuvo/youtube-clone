@@ -3,9 +3,11 @@ import Header from './components/header/Header'
 import Homescreen from './components/screens/homescreen/Homescreen';
 import Sidebar from './components/sidebar/Sidebar'
 import './_app.scss'
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import LoginScreen from "./components/screens/loginscreen/LoginScreen";
-import {BrowserRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
+import {Route,Switch,Redirect,useHistory} from 'react-router-dom'
+import {useSelector} from 'react-redux'
+
 
 const Layout = ({children})  => {
     const [sidebar,setSidebar] = useState(false)
@@ -29,8 +31,17 @@ const Layout = ({children})  => {
 }
 
 const App = () => {
+
+    const history = useHistory();
+    const {accessToken,loading} = useSelector((state) => {
+      return  state.auth;
+    })
+    useEffect(()  => {
+        if(!loading && !accessToken){
+           return history.push('/auth')
+        }
+    },[history,accessToken,loading])
     return (
-        <Router>
             <Switch>
                 <Route path='/' exact>
                     <Layout>
@@ -49,7 +60,7 @@ const App = () => {
                     <Redirect to='/'/>
                 </Route>
             </Switch>
-        </Router>
+
     )
 }
 export default App;
