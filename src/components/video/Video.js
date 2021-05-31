@@ -5,7 +5,7 @@ const Video = () => {
         <div>
             <div className="video">
                 <div className="video__top">
-                    <img src="https://i.ytimg.com/vi/07bYkxI12DI/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAY7XD_8CHWLpb13thzcE6NUiYYOQ" alt=""/>
+                    <img src="https://i.ytimg.com/vi/L8C5qrutvo4/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCieEhBt9yBjTvnJgWEY4Tv4N49Lg" alt=""/>
                     <span className='video__top__duration'>05:45</span>
                 </div>
                 <div className="video__title">
