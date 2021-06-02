@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
+import {useDispatch} from 'react-redux'
 import "./_categories.scss"
+import {categoryBarAction} from '../../redux-store/actions/vidoes.action'
 const  CategoriesBar = () => {
 
     const keywords = [
@@ -23,10 +25,11 @@ const  CategoriesBar = () => {
     ]
 
     const [active,setActive] = useState('All');
-
+    const distpatch = useDispatch()
     const handleClick = (value) => {
 
         setActive(value)
+        distpatch(categoryBarAction(value))
     }
 
 
