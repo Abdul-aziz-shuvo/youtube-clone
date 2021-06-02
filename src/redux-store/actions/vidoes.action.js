@@ -1,22 +1,66 @@
 import * as type from '../actionType'
 import request from '../../api'
-export const vidoesAction = () => async (dispatch) => {
+export const vidoesAction = () => async (dispatch,getState) => {
     dispatch({
-        type:type.HOME_VIDEO_REQUEST
+        type:type.HOME_VIDEOS_REQUEST
     })
     try{
-        alert('fasdf')
-      const data  = await request('/videos', {
+      const {data}  = await request('/videos', {
           params: {
               part: 'snippet,contentDetails,statistics',
               chart: "mostPopular",
               regionCode: 'BD',
-              maxResults: '20',
-              pageToken: ''
+              maxResults: '10',
+              pageToken: getState().homeVideos.nextPageToken
           }
       })
-        console.log(data)
+
+        dispatch({
+            type:type.HOME_VIDEOS_SUCCESS,
+            payload:{
+                videos: data.items,
+                nextPageToken : data.nextPageToken,
+                category : 'All'
+            }
+        })
     }catch (error){
-        console.log(error)
+
+        dispatch({
+            type:type.HOME_VIDEOS_FAIL,
+            payload: error.message
+        })
+    }
+}
+
+
+export const categoryBarAction = (keyword) => async (dispatch,getState) => {
+    dispatch({
+        type:type.HOME_VIDEOS_REQUEST
+    })
+    try{
+      const {data}  = await request('/search', {
+          params: {
+              part: 'snippet',
+              maxResults: '10',
+              pageToken: getState().homeVideos.nextPageToken,
+              q:keyword,
+              type:'video'
+          }
+      })
+
+        dispatch({
+            type:type.HOME_VIDEOS_SUCCESS,
+            payload:{
+                videos: data.items,
+                nextPageToken : data.nextPageToken,
+                category : keyword
+            }
+        })
+    }catch (error){
+
+        dispatch({
+            type:type.HOME_VIDEOS_FAIL,
+            payload: error.message
+        })
     }
 }

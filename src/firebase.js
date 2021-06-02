@@ -2,13 +2,14 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCnjnZuzbpblEUGFtA7KBLW_5nZCHypD8g",
-    authDomain: "shuvo-yt-clone.firebaseapp.com",
-    projectId: "shuvo-yt-clone",
-    storageBucket: "shuvo-yt-clone.appspot.com",
-    messagingSenderId: "702644085700",
-    appId: "1:702644085700:web:bb9f1699a4b1d1da233a91"
+    apiKey: "AIzaSyDsPB69-es-MEBKPc-iuDWqcxh6NG4fbb4",
+    authDomain: "shuvo-b92b0.firebaseapp.com",
+    projectId: "shuvo-b92b0",
+    storageBucket: "shuvo-b92b0.appspot.com",
+    messagingSenderId: "549825051326",
+    appId: "1:549825051326:web:1bdab355d40871276a3cef"
 };
 
 firebase.initializeApp(firebaseConfig)
+
 export default firebase.auth();

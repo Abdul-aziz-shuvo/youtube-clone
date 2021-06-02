@@ -3,7 +3,6 @@ const initialState = {
     user : sessionStorage.getItem('yt-user') ? sessionStorage.getItem('yt-user') : null,
     accessToken : sessionStorage.getItem('yt-access-token') ? sessionStorage.getItem('yt-access-token') : null,
     loading : false
-
 }
 export const authReducer = (state = initialState,action) => {
     const {type,payload} = action
