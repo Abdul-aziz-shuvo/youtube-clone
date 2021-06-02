@@ -5,6 +5,7 @@ import Sidebar from './components/sidebar/Sidebar'
 import './_app.scss'
 import {useState,useEffect} from "react";
 import LoginScreen from "./components/screens/loginscreen/LoginScreen";
+import WatchScreen from "./components/screens/watchscreen/watchScreen";
 import {Route,Switch,Redirect,useHistory} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 
@@ -21,7 +22,7 @@ const Layout = ({children})  => {
         <Header toggleSidebar={toggleSidebar}/>
         <div className="app_container">
             <Sidebar sidebar={sidebar} toggleSidebar={toggleSidebar}/>
-            <Container fuild className="app_main">
+            <Container  className="app_main">
                 {children}
             </Container>
         </div>
@@ -56,6 +57,12 @@ const App = () => {
                         <h3 style={{color:'white'}}>Search</h3>
                     </Layout>
                 </Route>
+                <Route path='/watch/:id'>
+                    <Layout>
+                       <WatchScreen/>
+                    </Layout>
+                </Route>
+
                 <Route>
                     <Redirect to='/'/>
                 </Route>
